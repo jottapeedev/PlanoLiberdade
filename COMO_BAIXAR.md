@@ -1,130 +1,85 @@
-# 📦 COMO BAIXAR O PROJETO LIBERDADE
+# 📦 COMO BAIXAR E USAR O LIBERDADE
 
-## ⚠️ Importante
-
-Não é possível gerar arquivos RAR diretamente através desta interface. Porém, você tem **3 opções fáceis** para obter o código completo:
-
----
-
-## ✅ OPÇÃO 1: Usar o script de empacotamento (MAIS FÁCIL)
-
-### No Windows:
-1. Execute o arquivo `empacotar.bat` (clique duas vezes)
-2. Aguarde a criação do arquivo `liberdade-projeto.zip`
-3. Extraia o ZIP e use o projeto
-
-### No Linux/Mac:
-```bash
-chmod +x empacotar.sh
-./empacotar.sh
-```
+O código está **completo no repositório** `jottapeedev/PlanoLiberdade`. Não é preciso copiar
+arquivos manualmente.
 
 ---
 
-## ✅ OPÇÃO 2: Copiar arquivos manualmente
-
-Todos os arquivos do projeto estão disponíveis nesta interface. Você pode:
-
-1. **Listar todos os arquivos** usando o comando de listagem
-2. **Ler cada arquivo** individualmente
-3. **Copiar o conteúdo** para arquivos locais
-
-### Arquivos principais:
-- `src/App.tsx` - Componente principal
-- `src/pages/*.tsx` - Todas as páginas (Dashboard, Inbox, MyDay, Sites, TikTok, Training, Studies, Finance, Goals, Settings)
-- `src/components/*.tsx` - Componentes (Sidebar, CommandPalette)
-- `src/lib/*.ts` - Tipos e store
-- `src/index.css` - Estilos globais
-- `package.json` - Dependências
-- `supabase/migrations/001_initial_schema.sql` - Schema do banco
-
----
-
-## ✅ OPÇÃO 3: Via GitHub (RECOMENDADO PARA DEPLOY)
-
-1. Crie um repositório no GitHub chamado `liberdade`
-2. Copie todos os arquivos para o repositório
-3. Faça push para o GitHub
-4. Importe o repositório na Vercel para deploy automático
-
----
-
-## 🚀 PRÓXIMOS PASSOS APÓS BAIXAR
+## ✅ Opção 1 — Clonar com Git (recomendado)
 
 ```bash
-# 1. Instalar dependências
+git clone https://github.com/jottapeedev/PlanoLiberdade.git
+cd PlanoLiberdade
 npm install
-
-# 2. Configurar variáveis de ambiente
-cp .env.example .env.local
-# Edite .env.local com suas credenciais do Supabase
-
-# 3. Executar o projeto
 npm run dev
+```
 
-# 4. Abrir no navegador
-# http://localhost:5173
+Abra **http://localhost:3000** no navegador.
+
+---
+
+## ✅ Opção 2 — Baixar ZIP pelo GitHub
+
+1. Abra o repositório no GitHub
+2. Clique em **Code ▾ → Download ZIP**
+3. Extraia a pasta e rode:
+
+```bash
+cd PlanoLiberdade
+npm install
+npm run dev
 ```
 
 ---
 
-## 📋 LISTA COMPLETA DE ARQUIVOS
+## ✅ Opção 3 — Empacotar localmente
 
+```bash
+./empacotar.sh        # Linux/macOS
+empacotar.bat         # Windows (duplo clique)
 ```
-liberdade/
-├── README.md
-├── GUIA_IMPLANTACAO.md
-├── index.html
-├── package.json
-├── package-lock.json
-├── tsconfig.json
-├── vite.config.js
-├── .env.example
-├── .gitignore
-├── empacotar.bat
-├── empacotar.sh
-│
-├── src/
-│   ├── main.tsx
-│   ├── App.tsx
-│   ├── index.css
-│   │
-│   ├── lib/
-│   │   ├── types.ts
-│   │   └── store.ts
-│   │
-│   ├── components/
-│   │   ├── Sidebar.tsx
-│   │   └── CommandPalette.tsx
-│   │
-│   └── pages/
-│       ├── Dashboard.tsx
-│       ├── Inbox.tsx
-│       ├── MyDay.tsx
-│       ├── Sites.tsx
-│       ├── TikTok.tsx
-│       ├── Training.tsx
-│       ├── Studies.tsx
-│       ├── Finance.tsx
-│       ├── Goals.tsx
-│       └── Settings.tsx
-│
-└── supabase/
-    └── migrations/
-        └── 001_initial_schema.sql
-```
+
+Gera `liberdade-projeto.zip` com o projeto pronto para distribuir.
 
 ---
 
-## 🆘 PRECISA DE AJUDA?
+## 🚀 Primeiros passos depois de abrir o app
 
-Se tiver dúvidas sobre como baixar ou implantar o projeto:
-
-1. Leia o `GUIA_IMPLANTACAO.md` para instruções detalhadas
-2. Verifique o `README.md` para informações gerais
-3. Execute os scripts de empacotamento para criar o ZIP
+1. A aplicação abre com **dados de demonstração** já preenchidos
+2. Vá em **Configurações** e ajuste:
+   - seu nome, tema (escuro/claro/sistema) e cor de destaque
+   - meta diária de foco, duração dos blocos e pausas
+   - quais módulos devem aparecer na navegação
+3. Use **Captura rápida** (botão na topbar ou tecla `N`) para jogar ideias na Caixa de entrada
+4. Abra **⌘K** para navegar por qualquer página, tarefa, lead ou meta
+5. Em **Configurações → Dados e backup**, clique em **Começar do zero** quando quiser limpar a
+   demonstração e usar seus dados reais
 
 ---
 
-**Projeto LIBERDADE v1.0**
-Organize hoje. Construa sua liberdade amanhã. 🚀
+## ⚠️ Importante sobre os dados
+
+- Tudo é salvo automaticamente no **navegador** (`localStorage`, chave
+  `liberdade.workspace.v1`)
+- Limpar os dados do site **apaga o workspace** — exporte um backup antes
+- Para usar em outro computador, exporte o JSON e importe no destino
+
+---
+
+## 📋 Pré-requisitos
+
+- **Node.js 18+** (recomendado 20+)
+- npm (incluído no Node)
+
+---
+
+## 🆘 Precisa de ajuda?
+
+1. `npm run typecheck` — valida o código TypeScript
+2. `npm run build` — garante que o build de produção funciona
+3. Consulte `GUIA_IMPLANTACAO.md` para deploy na Vercel
+4. Detalhes de funcionalidades em `README.md`
+
+---
+
+**Projeto LIBERDADE v1.0** — Organize hoje. Construa sua liberdade amanhã. 🚀
