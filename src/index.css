@@ -1,0 +1,318 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ============================================================
+   LIBERDADE — Design System
+   Tokens semânticos + temas (dark/light) + acento dinâmico
+   ============================================================ */
+
+:root,
+.dark {
+  --canvas: #07070b;
+  --canvas-2: #0b0b12;
+
+  --surface: #12121a;
+  --surface-2: #171722;
+  --surface-3: #1e1e2c;
+
+  --line: rgba(255, 255, 255, 0.08);
+  --line-strong: rgba(255, 255, 255, 0.16);
+
+  --ink: #f5f5f7;
+  --muted: #a2a2b4;
+  --faint: #6f6f82;
+
+  --accent: #8b5cf6;
+  --accent-2: #22d3ee;
+
+  --positive: #34d399;
+  --warning: #fbbf24;
+  --danger: #fb7185;
+  --info: #60a5fa;
+
+  --shadow-card: 0 1px 0 0 rgba(255, 255, 255, 0.04) inset,
+    0 20px 40px -24px rgba(0, 0, 0, 0.85);
+  --shadow-pop: 0 30px 70px -30px rgba(0, 0, 0, 0.9);
+  --ring: rgba(255, 255, 255, 0.06);
+}
+
+.light {
+  --canvas: #f5f6fb;
+  --canvas-2: #eceef7;
+
+  --surface: #ffffff;
+  --surface-2: #f7f8fc;
+  --surface-3: #eef0f8;
+
+  --line: rgba(15, 15, 35, 0.09);
+  --line-strong: rgba(15, 15, 35, 0.18);
+
+  --ink: #0d0d16;
+  --muted: #5c5c72;
+  --faint: #8a8a9e;
+
+  --positive: #059669;
+  --warning: #d97706;
+  --danger: #e11d48;
+  --info: #2563eb;
+
+  --shadow-card: 0 1px 2px rgba(16, 18, 40, 0.06),
+    0 18px 34px -26px rgba(16, 18, 40, 0.35);
+  --shadow-pop: 0 30px 60px -28px rgba(16, 18, 40, 0.4);
+  --ring: rgba(15, 15, 35, 0.05);
+}
+
+@theme inline {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: "Sora", "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --color-canvas: var(--canvas);
+  --color-canvas-2: var(--canvas-2);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --color-positive: var(--positive);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-info: var(--info);
+
+  --radius-xl: 0.9rem;
+  --radius-2xl: 1.15rem;
+  --radius-3xl: 1.5rem;
+
+  --shadow-card: var(--shadow-card);
+  --shadow-pop: var(--shadow-pop);
+
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-shimmer: shimmer 2.4s linear infinite;
+  --animate-pulse-ring: pulse-ring 2.6s ease-out infinite;
+  --animate-rise: rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, -16px, 0) scale(1.04);
+  }
+}
+@keyframes shimmer {
+  from {
+    background-position: -200% 0;
+  }
+  to {
+    background-position: 200% 0;
+  }
+}
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in oklab, var(--accent) 45%, transparent);
+  }
+  70% {
+    box-shadow: 0 0 0 14px transparent;
+  }
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* --------------------------- base --------------------------- */
+
+* {
+  border-color: var(--line);
+}
+
+html,
+body {
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--accent) 35%, transparent);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid color-mix(in oklab, var(--accent) 70%, transparent);
+  outline-offset: 2px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: color-mix(in oklab, var(--muted) 26%, transparent);
+  border-radius: 999px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in oklab, var(--muted) 45%, transparent);
+  background-clip: content-box;
+}
+
+input,
+textarea,
+select,
+button {
+  font: inherit;
+  color: inherit;
+}
+input::placeholder,
+textarea::placeholder {
+  color: var(--faint);
+}
+select option {
+  background: var(--surface);
+  color: var(--ink);
+}
+
+/* ------------------------- utilities ------------------------ */
+
+@utility app-bg {
+  position: relative;
+  background:
+    radial-gradient(
+      900px 520px at 12% -8%,
+      color-mix(in oklab, var(--accent) 22%, transparent),
+      transparent 62%
+    ),
+    radial-gradient(
+      760px 460px at 96% 4%,
+      color-mix(in oklab, var(--accent-2) 16%, transparent),
+      transparent 60%
+    ),
+    radial-gradient(900px 620px at 50% 110%, color-mix(in oklab, var(--accent) 10%, transparent), transparent 70%),
+    linear-gradient(180deg, var(--canvas) 0%, var(--canvas-2) 100%);
+  background-attachment: fixed;
+}
+
+@utility grid-overlay {
+  background-image: linear-gradient(to right, var(--line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 20%, transparent 78%);
+}
+
+@utility panel {
+  background: color-mix(in oklab, var(--surface) 82%, transparent);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(18px) saturate(140%);
+  border-radius: var(--radius-2xl);
+}
+
+@utility panel-flat {
+  background: color-mix(in oklab, var(--surface-2) 68%, transparent);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+}
+
+@utility panel-hover {
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.28s ease,
+    box-shadow 0.28s ease;
+}
+@utility hover-lift {
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.28s ease,
+    box-shadow 0.28s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in oklab, var(--accent) 45%, var(--line));
+  box-shadow: 0 26px 50px -30px color-mix(in oklab, var(--accent) 55%, transparent);
+}
+
+@utility accent-grad {
+  background-image: linear-gradient(120deg, var(--accent), var(--accent-2));
+}
+@utility accent-text {
+  background-image: linear-gradient(100deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+@utility accent-soft {
+  background: color-mix(in oklab, var(--accent) 14%, transparent);
+  color: color-mix(in oklab, var(--accent) 88%, var(--ink));
+  border: 1px solid color-mix(in oklab, var(--accent) 26%, transparent);
+}
+@utility glow {
+  box-shadow: 0 18px 45px -18px color-mix(in oklab, var(--accent) 75%, transparent);
+}
+@utility num {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+  letter-spacing: -0.01em;
+}
+@utility hide-scroll {
+  scrollbar-width: none;
+}
+.hide-scroll::-webkit-scrollbar {
+  display: none;
+}
+@utility skeleton {
+  background: linear-gradient(
+    90deg,
+    color-mix(in oklab, var(--muted) 10%, transparent) 25%,
+    color-mix(in oklab, var(--muted) 22%, transparent) 50%,
+    color-mix(in oklab, var(--muted) 10%, transparent) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2.4s linear infinite;
+}
+@utility label-xs {
+  font-size: 0.6875rem;
+  line-height: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+/* recharts polish */
+.recharts-cartesian-axis-tick text {
+  fill: var(--faint);
+  font-size: 11px;
+}
+.recharts-cartesian-grid line {
+  stroke: var(--line);
+}
+.recharts-default-tooltip {
+  border-radius: 12px !important;
+  border: 1px solid var(--line) !important;
+  background: var(--surface) !important;
+  box-shadow: var(--shadow-pop);
+}

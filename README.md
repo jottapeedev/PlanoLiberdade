@@ -2,34 +2,54 @@
 
 > Organize hoje. Construa sua liberdade amanhã.
 
-LIBERDADE é uma aplicação web completa de produtividade pessoal e gestão de negócios digitais. Funciona como central de comando para organizar projetos, leads, estudos, finanças, conteúdos e metas — tudo em um único lugar.
+Aplicação web completa de produtividade pessoal e gestão de negócios digitais. Funciona como **central de comando** para organizar projetos, leads, estudos, treinos, hábitos, finanças, metas e deliveries — tudo em um único lugar, com visual moderno e interações fluidas.
 
 ---
 
-## 📋 Funcionalidades
+## ✨ Destaques da interface
 
-### Core
-- **Dashboard** — Visão geral com score de produtividade, renda, metas e foco do dia
-- **Inbox** — Captura rápida de ideias, tarefas e pendências
-- **Meu Dia** — Planejamento diário com prioridades, timer e modo foco
-- **Command Palette** — Busca global e atalhos (Ctrl+K)
+- **Design system próprio** com tokens semânticos (superfícies, linhas, tinta, estados) em dark **e** light
+- **Cor de destaque personalizável** (6 paletas) aplicada em gradientes, gráficos e anéis de progresso
+- **Layout responsivo** com sidebar colapsável, topbar moderno e navegação por seções
+- **Command palette** (⌘K) com busca em páginas, tarefas, leads, metas e cursos
+- **Kanban com arrastar e soltar** (dnd-kit) em CRM, TikTok Shop e deliveries
+- **Gráficos** (Recharts) estilizados com gradientes, donuts, heatmaps e sparklines
+- **Animações** com Framer Motion, micro-interações e feedback por toasts
+- **Captura rápida** (tecla `N`) para jogar ideias na caixa de entrada sem sair da tela
+- **Timer de foco** estilo pomodoro que registra minutos estudados automaticamente
+
+---
+
+## 📋 Módulos
+
+### Principal
+| Módulo | O que faz |
+|--------|-----------|
+| **Visão geral** | Score de produtividade do dia, renda do mês, pipeline, metas, hábitos, prazos e atalhos |
+| **Caixa de entrada** | Captura rápida de ideias/tarefas/notas/links e processamento em um clique |
+| **Meu dia** | Planejador diário com prioridades, estimativas de tempo, backlog e timer de foco |
 
 ### Negócios
-- **Sites (CRM)** — Kanban de leads com pipeline editável
-- **TikTok Shop** — Produtos, conteúdos, pipeline e métricas
-- **Srta Doçura** — Gestão de delivery (arquitetura pronta)
-- **Srta das Massas** — Gestão de delivery (arquitetura pronta)
+| Módulo | O que faz |
+|--------|-----------|
+| **CRM de Sites** | Pipeline de leads com kanban, etapas editáveis, KPIs (pipeline, conversão, ticket médio) e visão em lista |
+| **TikTok Shop** | Catálogo com margem e giro, funil de conteúdo (ideia → publicado), desempenho por vídeo e alertas de estoque |
+| **Srta Doçura** | Painel de delivery: pedidos no kanban, cardápio com custos, clientes, canais e faturamento diário |
+| **Srta das Massas** | Mesma arquitetura de delivery, com identidade própria |
 
-### Produtividade
-- **Estudos** — Cursos, sessões com timer, progresso e heatmap
-- **Metas** — Sistema genérico de metas por período
-- **Hábitos** — Rastreamento com streaks
-- **Finanças** — Consolidado de todas as fontes de renda
+### Crescimento
+| Módulo | O que faz |
+|--------|-----------|
+| **Estudos** | Cursos com progresso, registro rápido de sessões, heatmap de 12 semanas e meta semanal |
+| **Treinos** | Planilha semanal de treinos, execução dos exercícios, histórico, intensidade e carga |
+| **Hábitos** | Rotina diária com marcação dos últimos 7 dias, streaks, taxa de conclusão e mapa de consistência |
+| **Metas** | Objetivos por período com marcos, progresso, prazos e celebração ao concluir |
+| **Finanças** | Receitas/despesas por fonte, comparação de 6 meses, metas por fonte e distribuição de lucro |
 
-### Configuração
-- **Tudo editável** — Status, categorias, prioridades, módulos
-- **Dark/Light mode** — Com cor de destaque personalizável
-- **Módulos ativáveis** — Oculte o que não usa
+### Sistema
+| Módulo | O que faz |
+|--------|-----------|
+| **Configurações** | Perfil, tema, cor de destaque, parâmetros de foco, liga/desliga de módulos, backup e restauração |
 
 ---
 
@@ -38,142 +58,107 @@ LIBERDADE é uma aplicação web completa de produtividade pessoal e gestão de 
 | Tecnologia | Uso |
 |-----------|-----|
 | React 18 | UI |
-| TypeScript | Tipagem |
-| Vite | Build tool |
-| Tailwind CSS 4 | Estilização |
+| TypeScript (strict) | Tipagem |
+| Vite 6 | Build tool |
+| Tailwind CSS 4 | Design system e utilitários |
 | Framer Motion | Animações |
 | Recharts | Gráficos |
-| React Router | Navegação |
+| dnd-kit | Kanban com arrastar e soltar |
+| React Router 6 | Navegação |
 | Lucide React | Ícones |
 | date-fns | Datas |
-| Supabase | Auth + DB + Storage |
-| Zod | Validação |
-| React Hook Form | Formulários |
+| canvas-confetti | Celebrações |
+| Supabase (previsto) | Auth + DB + Storage — fase 2 |
 
 ---
 
 ## 📦 Instalação
 
 ```bash
-# Clone o repositório
-git clone https://github.com/seu-usuario/liberdade.git
-cd liberdade
-
-# Instale dependências
+git clone https://github.com/jottapeedev/PlanoLiberdade.git
+cd PlanoLiberdade
 npm install
-
-# Configure variáveis de ambiente
-cp .env.example .env.local
+npm run dev
 ```
 
----
+Acesse **http://localhost:3000**.
 
-## 🔑 Variáveis de Ambiente
-
-Crie um arquivo `.env.local` na raiz do projeto:
-
-```env
-VITE_SUPABASE_URL=https://seu-projeto.supabase.co
-VITE_SUPABASE_ANON_KEY=sua-chave-anonima
-```
-
-> ⚠️ Nunca commite chaves privadas. Use apenas a chave anon/public.
-
----
-
-## 🗄 Supabase
-
-### Setup
-
-1. Crie um projeto em [supabase.com](https://supabase.com)
-2. Vá em SQL Editor
-3. Execute o arquivo `supabase/migrations/001_initial_schema.sql`
-4. Configure as variáveis de ambiente
-
-### Estrutura do Banco
-
-O banco possui ~45 tabelas organizadas por módulo:
-- `workspaces` / `profiles` — Multi-tenancy
-- `tasks` / `inbox_items` — Produtividade
-- `leads` / `lead_statuses` — CRM Sites
-- `tiktok_products` / `tiktok_contents` — TikTok Shop
-- `study_courses` / `study_sessions` — Estudos
-- `businesses` / `business_orders` — Negócios genéricos
-- `transactions` / `income_sources` — Finanças
-- `goals` / `habits` — Metas e hábitos
-
-### RLS (Row Level Security)
-
-Todas as tabelas possuem RLS ativado. Políticas garantem que usuários só acessem dados do seu workspace.
-
----
-
-## 🚀 Execução Local
+### Scripts
 
 ```bash
-# Desenvolvimento
-npm run dev
-
-# Build de produção
-npm run build
-
-# Preview do build
-npm run preview
-
-# Typecheck
-npm run typecheck
+npm run dev         # ambiente de desenvolvimento (porta 3000)
+npm run build        # build de produção em dist/
+npm run preview      # pré-visualiza o build
+npm run typecheck    # verificação de tipos TypeScript
 ```
 
 ---
 
-## 🌐 Deploy (Vercel)
+## 💾 Persistência de dados
 
-### Via GitHub
+A versão atual é **local-first**: o workspace é salvo automaticamente no `localStorage` do
+navegador, com um conjunto de **dados de demonstração** já populado no primeiro acesso
+(tarefas, leads, produtos, pedidos, cursos, treinos, transações, metas e hábitos).
 
-1. Push para o GitHub
+- **Exportar backup** → JSON completo em *Configurações*
+- **Importar dados** → restaura um backup anterior
+- **Recarregar demo** / **Começar do zero** → troca o conjunto de dados
+
+> A integração com Supabase (auth multi-usuário e sincronização na nuvem) está preparada no
+> roadmap — os tipos de domínio em `src/lib/types.ts` já espelham o schema proposto.
+
+---
+
+## 🌐 Deploy na Vercel
+
+1. Faça push do repositório no GitHub
 2. Importe o projeto na [Vercel](https://vercel.com)
-3. Configure as variáveis de ambiente no painel da Vercel
-4. Deploy automático a cada push
-
-### Variáveis na Vercel
-
-Adicione no painel da Vercel:
-- `VITE_SUPABASE_URL`
-- `VITE_SUPABASE_ANON_KEY`
+3. Build: `npm run build` · Output: `dist` (já configurado em `vercel.json`)
+4. Deploy — as rotas do SPA são reescritas para `index.html` automaticamente
 
 ---
 
-## 📁 Estrutura do Projeto
+## 📁 Estrutura do projeto
 
 ```
-liberdade/
+PlanoLiberdade/
 ├── index.html
 ├── package.json
 ├── vite.config.js
 ├── tsconfig.json
-├── supabase/
-│   └── migrations/
-│       └── 001_initial_schema.sql
+├── vercel.json
 ├── src/
 │   ├── main.tsx
-│   ├── App.tsx
-│   ├── index.css
+│   ├── App.tsx                 # shell, rotas e guarda de módulos
+│   ├── index.css               # design system (tokens, temas, utilitários)
 │   ├── lib/
-│   │   ├── types.ts          # Tipos TypeScript
-│   │   └── store.ts          # Estado + helpers
+│   │   ├── types.ts            # modelo de domínio
+│   │   ├── store.tsx           # contexto, persistência e toasts
+│   │   ├── seed.ts             # dados de demonstração
+│   │   ├── metrics.ts          # indicadores e score de produtividade
+│   │   ├── modules.ts          # registro de módulos e navegação
+│   │   ├── theme.ts            # temas e paletas de destaque
+│   │   └── utils.ts            # formatadores e helpers
 │   ├── components/
-│   │   ├── Sidebar.tsx       # Navegação lateral
-│   │   └── CommandPalette.tsx # Busca global
+│   │   ├── ui.tsx              # kit de componentes (panels, modais, ring, heatmap…)
+│   │   ├── charts.tsx          # wrappers de gráficos
+│   │   ├── Kanban.tsx          # kanban genérico com dnd-kit
+│   │   ├── Sidebar.tsx
+│   │   ├── TopBar.tsx          # topbar + captura rápida
+│   │   └── CommandPalette.tsx
 │   └── pages/
-│       ├── Dashboard.tsx     # Página principal
-│       ├── Inbox.tsx         # Captura rápida
-│       ├── MyDay.tsx         # Planejamento diário
-│       ├── Sites.tsx         # CRM de sites
-│       ├── TikTok.tsx        # TikTok Shop
-│       ├── Studies.tsx       # Estudos
-│       ├── Finance.tsx       # Finanças
-│       ├── Goals.tsx         # Metas
-│       └── Settings.tsx      # Configurações
+│       ├── Dashboard.tsx
+│       ├── Inbox.tsx
+│       ├── MyDay.tsx
+│       ├── Sites.tsx
+│       ├── TikTok.tsx
+│       ├── Business.tsx        # Srta Doçura e Srta das Massas
+│       ├── Studies.tsx
+│       ├── Training.tsx
+│       ├── Habits.tsx
+│       ├── Goals.tsx
+│       ├── Finance.tsx
+│       └── Settings.tsx
 └── README.md
 ```
 
@@ -181,32 +166,24 @@ liberdade/
 
 ## 🎨 Design System
 
-- **Dark mode** como padrão
-- **Glassmorphism** moderado
-- **Gradientes** discretos (purple → indigo)
-- **Animações** com Framer Motion
-- **Tipografia** Inter
-- **Ícones** Lucide
-- **Responsivo** mobile-first
+- **Tokens semânticos**: `--canvas`, `--surface`, `--line`, `--ink`, `--muted`, `--accent`, estados (`positive`, `warning`, `danger`, `info`)
+- **Temas**: dark (padrão) e light, com detecção de preferência do sistema
+- **Acentos**: violeta, oceano, esmeralda, âmbar, rosa e grafite
+- **Utilitários próprios**: `panel`, `accent-grad`, `accent-text`, `accent-soft`, `label-xs`, `num`, `heatmap`, `hover-lift`
+- **Tipografia**: Inter (texto) + Sora (display numérico)
+- **Movimento**: transições de 200–300 ms, easing `cubic-bezier(.22,1,.36,1)`
 
 ---
 
-## 🔮 Próximas Fases
+## 🔮 Próximas fases
 
-### Fase 2
-- [ ] Calendário completo
-- [ ] Relatórios avançados
-- [ ] Srta Doçura (módulo delivery)
-- [ ] Srta das Massas (módulo delivery)
-- [ ] Faculdade
-
-### Fase 3
+- [ ] Supabase: auth, sincronização em nuvem e RLS
+- [ ] Calendário completo e visão de semana
+- [ ] Relatórios avançados e exportação CSV/PDF
+- [ ] PWA com notificações e uso offline
+- [ ] Integração WhatsApp (pedidos) e TikTok API
+- [ ] Assistente de IA para priorização
 - [ ] Gamificação (XP, níveis, conquistas)
-- [ ] Notificações push (PWA)
-- [ ] Integração WhatsApp
-- [ ] Integração TikTok API
-- [ ] Assistente IA
-- [ ] Exportação CSV/PDF
 
 ---
 
